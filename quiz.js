@@ -1,38 +1,93 @@
-const startButton = document.getElementById("startBtn")
-const questionContainerElement = document.getElementById("question-container")
+const startButton = document.getElementById("startBtn");
+const questionScreen = document.getElementById("question-screen");
+const startScreen = document.getElementById("start-screen");
+const questionEl = document.getElementById("question");
+const timerEl = document.getElementById("timer");
+const answerButtonEl = document.getElementById("answer-button");
 
-const shuffleQuestions, currentQuestionIndex
+var  currentQuestionIndex = 0;
+var timer = 60;
+
 
 startButton.addEventListener("click", startGame)
 
 function startGame() {
-    console.log("started")
-    startButton.classList.add("hide")
-    shuffleQuestions = question.sort(() => Math.random( - .5)
-    currentQuestionIndex = 0
-    questionContainerElement.classList.remove("hide")
+    startScreen.setAttribute("class", "hide")
+    questionScreen.classList.remove("hide")
     setNextQuestion()
 }
 
 function setNextQuestion() {
-    showQuestion(shuffleQuestions[currentQuestionIndex])
+   var currentQuestion = questions[currentQuestionIndex];
+   console.log(currentQuestion)
+   questionEl.textContent = currentQuestion.question;
+   timerEl.textContent = timer;
+
+   answerButtonEl.innerHTML = "";
+
+   currentQuestion.choices.forEach(function(choice) {
+       var answerButton = document.createElement("button");
+       answerButton.setAttribute("class", "choice");
+       answerButton.setAttribute("value", choice);
+
+       answerButton.onclick = questionClick;
+
+       answerButton.textContent = choice;
+       answerButtonEl.appendChild(answerButton);
+   })
+}
+
+function questionClick() {
+    console.log(this.value)
+  
+    if(this.value !== questions[currentQuestionIndex].answer) {
+        console.log("wrong")
+    } else {
+        console.log("right")
+    }
+    currentQuestionIndex++;
+    if(currentQuestionIndex === questions.length) {
+        // endQuiz()
+    } else {
+    setNextQuestion();
+    }
 
 }
 
-function showQuestion() {
-    
+function clocktick() {
+    setInterval(() => {
+        
+    }, interval);
 }
 
-function selectAnswer() {
-
+function endQuiz() {
+    console.log("show question here")
 }
 
 const questions = [
     {
-        question: 'What Javascript?'
-        answers:[
-            { text: "is programming language that allows you to implement complex features on webpages.", correct: true },
-            { text: " is a styling prgramme to change colors.", correct: false}
-        ]
+        question: 'What Javascript?',
+        choices: [ "answer one", "answer 2", "answer 3", "answer 4"],
+        answer: "answer one"
+            
+    },
+    {
+        question: 'What Javascript1?',
+        choices: [ "answer one", "answer 2", "answer 3", "answer 4"],
+        answer: "answer one"
+            
+    },
+    {
+        question: 'What Javascript2?',
+        choices: [ "answer one", "answer 2", "answer 3", "answer 4"],
+        answer: "answer one"
+            
+    },
+    {
+        question: 'What Javascript3?',
+        choices: [ "answer one", "answer 2", "answer 3", "answer 4"],
+        answer: "answer one"
+            
     }
+
 ]
