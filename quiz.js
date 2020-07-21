@@ -6,6 +6,7 @@ const timerEl = document.getElementById("timer");
 const answerButtonEl = document.getElementById("answer-button");
 
 var currentQuestionIndex = 0;
+var timeKeeper = setInterval(setTime, 1000);
 var timer = 60;
 
 
@@ -23,6 +24,8 @@ function setTime() {
     var timerInterval = setInterval(function() {
         secondsLeft--;
         timerEl.textContent = secondsLeft;
+        for (let timerInterval = 0; timerInterval < array.length; timerInterval++) {
+        }
         
         if(secondsLeft === 0) {
             clearInterval(timerInterval);
@@ -88,9 +91,12 @@ const questions = [
             
     },
     {
-        question: 'What Javascript1?',
-        choices: [ "answer one", "answer 2", "answer 3", "answer 4"],
-        answer: "answer one"
+        question: 'What does Full Stack refer to?',
+        choices: [ "A big stack of pancakes", 
+        "The first stack of HTML programming", 
+        "Working with both front and backend of the website", 
+        "The back end of the website"],
+        answer: "answer three"
             
     },
     {
