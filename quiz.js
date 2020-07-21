@@ -5,16 +5,30 @@ const questionEl = document.getElementById("question");
 const timerEl = document.getElementById("timer");
 const answerButtonEl = document.getElementById("answer-button");
 
-var  currentQuestionIndex = 0;
+var currentQuestionIndex = 0;
 var timer = 60;
 
 
 startButton.addEventListener("click", startGame)
 
+// Start the game
 function startGame() {
     startScreen.setAttribute("class", "hide")
     questionScreen.classList.remove("hide")
     setNextQuestion()
+}
+
+// set timer
+function setTime() {
+    var timerInterval = setInterval(function() {
+        secondsLeft--;
+        timerEl.textContent = secondsLeft;
+        
+        if(secondsLeft === 0) {
+            clearInterval(timerInterval);
+            sendMessage();
+        }
+     }, 1000);
 }
 
 function setNextQuestion() {
@@ -51,7 +65,6 @@ function questionClick() {
     } else {
     setNextQuestion();
     }
-
 }
 
 function clocktick() {
@@ -67,7 +80,10 @@ function endQuiz() {
 const questions = [
     {
         question: 'What Javascript?',
-        choices: [ "answer one", "answer 2", "answer 3", "answer 4"],
+        choices: [ "A programming language that allows you to implement complex features on a web page", 
+        "A film about coffee", 
+        "A way to add colors and change fonts", 
+        "High level goverment coding"],
         answer: "answer one"
             
     },
@@ -78,15 +94,21 @@ const questions = [
             
     },
     {
-        question: 'What Javascript2?',
-        choices: [ "answer one", "answer 2", "answer 3", "answer 4"],
-        answer: "answer one"
+        question: 'What does ParseInt do?',
+        choices: [ "It changes the weather", 
+        "Integrates all variables", 
+        "Parses an object", 
+        "Parses a string and returns an integar"],
+        answer: "answer four"
             
     },
     {
-        question: 'What Javascript3?',
-        choices: [ "answer one", "answer 2", "answer 3", "answer 4"],
-        answer: "answer one"
+        question: 'An "alt" atribute is an example of which of the following?',
+        choices: [ "Alternative coding language", 
+        "When an img cannot be displayed an alternate text message appears", 
+        "basic javascript", 
+        "A string"],
+        answer: "answer two"
             
     }
 
