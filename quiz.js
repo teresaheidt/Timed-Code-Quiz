@@ -2,6 +2,7 @@ const startButton = document.getElementById("startBtn");
 const scoreButton = document.getElementById("scoreBtn")
 const questionScreen = document.getElementById("question-screen");
 const startScreen = document.getElementById("start-screen");
+const highScorePage = document.getElementById("highScore-page")
 const questionEl = document.getElementById("question");
 const timerEl = document.getElementById("timer");
 const answerButtonEl = document.getElementById("answer-button");
@@ -31,8 +32,8 @@ function startGame() {
 
 // see high score
 function highScores() {
-    highScorePage.setAttribute("class", "hide");
-    scoreButton.classList.remove("hide");
+    highScorePage.setAttribute("class", "hide")
+    scoreButton.classList.remove("hide")
 }
 
 // set timer
