@@ -1,0 +1,36 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: lightcyan
+}
+
+
+.scoreContainer {
+    width: 800px;
+    max-width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;  
+    text-align: center;  
+}
+
+.btn {
+    border-radius: 50px;
+    padding: 20px 10px;
+    color:lightpink;
+}
+
+
+
+

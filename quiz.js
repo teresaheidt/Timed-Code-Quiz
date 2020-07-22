@@ -1,42 +1,53 @@
 const startButton = document.getElementById("startBtn");
+const scoreButton = document.getElementById("scoreBtn")
 const questionScreen = document.getElementById("question-screen");
 const startScreen = document.getElementById("start-screen");
 const questionEl = document.getElementById("question");
 const timerEl = document.getElementById("timer");
 const answerButtonEl = document.getElementById("answer-button");
 
+// variables
+var timerInterval;
+// set time we are counting down to
+var secondsLeft = 0;
 var currentQuestionIndex = 0;
-var timeKeeper = setInterval(setTime, 1000);
-var timer = 60;
+// Update the count down every second
+var timeKeeper = setInterval(setTime, 0);
+var timer = 60
 
-
+// button to begin the game
 startButton.addEventListener("click", startGame)
 
-// Start the game
+// button to see the high score
+scoreButton.addEventListener("click", highScores)
+
+// Start game function
 function startGame() {
     startScreen.setAttribute("class", "hide")
     questionScreen.classList.remove("hide")
+    setTime()
     setNextQuestion()
+}
+
+// see high score
+function highScores() {
+    highScorePage.setAttribute("class", "hide");
+    scoreButton.classList.remove("hide");
 }
 
 // set timer
 function setTime() {
-    var timerInterval = setInterval(function() {
-        secondsLeft--;
-        timerEl.textContent = secondsLeft;
-        for (let timerInterval = 0; timerInterval < array.length; timerInterval++) {
+    timerInterval = setInterval(function() {
+        secondsLeft;
+        console.log(secondsLeft);
+        if(secondsLeft < 0) {
+        clearInterval(timerInterval);
         }
-        
-        if(secondsLeft === 0) {
-            clearInterval(timerInterval);
-            sendMessage();
-        }
-     }, 1000);
-}
+    }, 1000)
+} 
 
 function setNextQuestion() {
    var currentQuestion = questions[currentQuestionIndex];
-   console.log(currentQuestion)
    questionEl.textContent = currentQuestion.question;
    timerEl.textContent = timer;
 
@@ -68,12 +79,6 @@ function questionClick() {
     } else {
     setNextQuestion();
     }
-}
-
-function clocktick() {
-    setInterval(() => {
-        
-    }, interval);
 }
 
 function endQuiz() {
@@ -116,6 +121,5 @@ const questions = [
         "A string"],
         answer: "answer two"
             
-    }
-
+    },
 ]
