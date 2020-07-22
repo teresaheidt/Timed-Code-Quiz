@@ -2,7 +2,6 @@ const startButton = document.getElementById("startBtn");
 const scoreButton = document.getElementById("scoreBtn")
 const questionScreen = document.getElementById("question-screen");
 const startScreen = document.getElementById("start-screen");
-const highScorePage = document.getElementById("highScore-page")
 const questionEl = document.getElementById("question");
 const timerEl = document.getElementById("timer");
 const answerButtonEl = document.getElementById("answer-button");
@@ -10,17 +9,17 @@ const answerButtonEl = document.getElementById("answer-button");
 // variables
 var timerInterval;
 // set time we are counting down to
-var secondsLeft = 0;
+var secondsLeft = 60;
 var currentQuestionIndex = 0;
 // Update the count down every second
-var timeKeeper = setInterval(setTime, 0);
+// var timeKeeper = setInterval(setTime, 0);
 var timer = 60
 
 // button to begin the game
 startButton.addEventListener("click", startGame)
 
 // button to see the high score
-scoreButton.addEventListener("click", highScores)
+// scoreButton.addEventListener("click", highScores)
 
 // Start game function
 function startGame() {
@@ -39,9 +38,10 @@ function highScores() {
 // set timer
 function setTime() {
     timerInterval = setInterval(function() {
-        secondsLeft;
+        secondsLeft--;
         console.log(secondsLeft);
-        if(secondsLeft < 0) {
+        timerEl.innerText = secondsLeft;
+        if(secondsLeft === 0) {
         clearInterval(timerInterval);
         }
     }, 1000)
@@ -82,10 +82,6 @@ function questionClick() {
     }
 }
 
-function endQuiz() {
-    console.log("show question here")
-}
-
 const questions = [
     {
         question: 'What Javascript?',
@@ -124,3 +120,8 @@ const questions = [
             
     },
 ]
+
+function endQuiz() {
+    console.log("show question here")
+    document.getElementById("").innerHTML += "<a>"
+}
