@@ -1,25 +1,21 @@
 const startButton = document.getElementById("startBtn");
-const scoreButton = document.getElementById("scoreBtn")
+const scoreButton = document.getElementById("scoreBtn");
 const questionScreen = document.getElementById("question-screen");
 const startScreen = document.getElementById("start-screen");
 const questionEl = document.getElementById("question");
 const timerEl = document.getElementById("timer");
 const answerButtonEl = document.getElementById("answer-button");
+const saveInitals = document.getElementById("saveInitials");
 
 // variables
 var timerInterval;
 // set time we are counting down to
 var secondsLeft = 60;
 var currentQuestionIndex = 0;
-// Update the count down every second
-// var timeKeeper = setInterval(setTime, 0);
 var timer = 60
 
 // button to begin the game
 startButton.addEventListener("click", startGame)
-
-// button to see the high score
-// scoreButton.addEventListener("click", highScores)
 
 // Start game function
 function startGame() {
@@ -27,12 +23,6 @@ function startGame() {
     questionScreen.classList.remove("hide")
     setTime()
     setNextQuestion()
-}
-
-// see high score
-function highScores() {
-    highScorePage.setAttribute("class", "hide")
-    scoreButton.classList.remove("hide")
 }
 
 // set timer
@@ -45,12 +35,13 @@ function setTime() {
         clearInterval(timerInterval);
         }
     }, 1000)
-} 
+}
 
+// set the questions to be answered one after the other
 function setNextQuestion() {
    var currentQuestion = questions[currentQuestionIndex];
    questionEl.textContent = currentQuestion.question;
-   timerEl.textContent = timer;
+   timerEl.textContent = secondsLeft;
 
    answerButtonEl.innerHTML = "";
 
@@ -66,22 +57,44 @@ function setNextQuestion() {
    })
 }
 
+// if the user doesn't get the question right then -15 is taken from the timer
 function questionClick() {
-    console.log(this.value)
-  
     if(this.value !== questions[currentQuestionIndex].answer) {
-        console.log("wrong")
-    } else {
-        console.log("right")
+        secondsLeft = secondsLeft - 15
+        console.log("wrong");
+    } 
+    else {
     }
     currentQuestionIndex++;
-    if(currentQuestionIndex === questions.length) {
-        // endQuiz()
+    if (currentQuestionIndex === questions.length) {
+        endQuiz()
     } else {
     setNextQuestion();
     }
 }
 
+// the quiz ends when the questions have been completed
+function endQuiz () {
+    clearInterval(timerInterval)
+    questionEl.textContent = ""
+    answerButtonEl.textContent = ""
+    timerEl.innerText = secondsLeft;
+    console.log("Well done!")
+    document.getElementById("end-screen").style.display="block"
+
+// see high score
+function highScores() {
+    highScorePage.setAttribute("class", "hide")
+    scoreButton.classList.remove("hide")
+    var highScore = document.getElementById=("saveInitals")
+
+// get the localstorage and loop and show the list for the
+    window.localStorage.setItem('user', JSON.stringify(person));
+}
+}
+
+
+// the list of questions the user must complete
 const questions = [
     {
         question: 'What Javascript?',
@@ -89,7 +102,7 @@ const questions = [
         "A film about coffee", 
         "A way to add colors and change fonts", 
         "High level goverment coding"],
-        answer: "answer one"
+        answer: "A programming language that allows you to implement complex features on a web page",
             
     },
     {
@@ -98,7 +111,7 @@ const questions = [
         "The first stack of HTML programming", 
         "Working with both front and backend of the website", 
         "The back end of the website"],
-        answer: "answer three"
+        answer: "Working with both front and backend of the website"
             
     },
     {
@@ -107,21 +120,44 @@ const questions = [
         "Integrates all variables", 
         "Parses an object", 
         "Parses a string and returns an integar"],
-        answer: "answer four"
+        answer: "Parses a string and returns an integar"
             
     },
     {
-        question: 'An "alt" atribute is an example of which of the following?',
-        choices: [ "Alternative coding language", 
-        "When an img cannot be displayed an alternate text message appears", 
-        "basic javascript", 
-        "A string"],
-        answer: "answer two"
+        question: 'What is the function of a <ul> tag?',
+        choices: [ "Defines an unordered list", 
+        "Defines an ordered list", 
+        "Is the beginning of a URL", 
+        "An underline element"],
+        answer: "Defines an unordered list"
+            
+    },
+    {
+        question: 'A CSS float property is a...?',
+        choices: [ "Primitive form of Javascript and will be extinct very soon", 
+        "Function that deploys multipple lines of code", 
+        "Proprty that can float to the bottom of the page", 
+        "Propery that determines how far left or how far right and element should float within its parent element"],
+        answer: "Propery that determines how far left or how far right and element should float within its parent element"
+            
+    },
+    {
+        question: 'How many selectors are used in CSS?',
+        choices: [ "Ten", 
+        "Two", 
+        "Twenty", 
+        "Too many to count"],
+        answer: "Two"
+    },
+    { 
+        question: 'What is a "String"?',
+        choices: [ "A ball of yarn", 
+        "A number element that can only be used for mathmatical purposes", 
+        "A grouping of characters (letter, spaces, numbers, or symbols), surrounded by single or double quotes", 
+        "A form used in html to create multiple lines of code"],
+        answer: "A grouping of characters (letter, spaces, numbers, or symbols), surrounded by single or double quotes",
             
     },
 ]
 
-function endQuiz() {
-    console.log("show question here")
-    document.getElementById("").innerHTML += "<a>"
-}
+
