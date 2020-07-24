@@ -1,23 +1,18 @@
-// user saves initials  
-var highScoreList = document.querySelector("scoreList");
-var initialEl = document.querySelector("initial");
 
+//acd event listent tho the save initial
 
-var initial;
+document.addEventListener("initial");
+document.addEventListener("userScore");
 
-initialEl.addEventListener.("scoreList", function(event) {
-    event.preventDefault();
-    initial = initialEl.value;
-    document.querySelector("#highScore");
-})
-//acd event listent tho the save id 
-
-
+localStorage.getItem('initials')
+localStorage.getItem("time")
 
 // show a form the get the initials and a button to save 
 
 
-
-
 /// show the scores
 
+function displayUserScore() {
+    var initial = document.querySelector("initial").value;
+    var userScore = document.querySelector("userScore").value;
+}

@@ -82,17 +82,19 @@ function endQuiz () {
     console.log("Well done!")
     document.getElementById("end-screen").style.display="block"
 
-// see high score
+// see highscore
 function highScores() {
     highScorePage.setAttribute("class", "hide")
     scoreButton.classList.remove("hide")
-    var highScore = document.getElementById=("saveInitals")
+    var highScore = document.getElementById=("saveInitials")
+    console.log("highScores")
 
-// get the localstorage and loop and show the list for the
-    window.localStorage.setItem('user', JSON.stringify(person));
+// get the localstorage 
+    
+    localStorage.setItem('initials', JSON.stringify(time));
+    console.log("initials");
 }
 }
-
 
 // the list of questions the user must complete
 const questions = [
@@ -148,6 +150,14 @@ const questions = [
         "Twenty", 
         "Too many to count"],
         answer: "Two"
+    },
+    {
+        question: 'What is "getElementById"?',
+        choices: [ "It is the method to add a class element to a string", 
+        "It is a method to find an html element (with an id) and change its content", 
+        "It is a way to look up your coding credentials", 
+        "It is a way to locate the id in css"],
+        answer: "It is a method to find an html element (with an id) and change its content"
     },
     { 
         question: 'What is a "String"?',
