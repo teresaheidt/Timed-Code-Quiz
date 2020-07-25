@@ -5,7 +5,7 @@ const startScreen = document.getElementById("start-screen");
 const questionEl = document.getElementById("question");
 const timerEl = document.getElementById("timer");
 const answerButtonEl = document.getElementById("answer-button");
-const saveInitals = document.getElementById("saveInitials");
+const saveInitals = document.getElementById("save");
 var score = 0;
 
 // variables
@@ -86,21 +86,20 @@ function endQuiz () {
 
 // see highscore
 function highScores() {
-    //highScorePage.setAttribute("class", "hide")
-    //scoreButton.classList.remove("hide")
     var highScore = document.getElementById("initials").value;
 
 // get the localstorage 
     var saveInitials = document.getElementById("saveYourInitials");
+ 
     var displayBtn = document.getElementById("displayScores");
 
     var user = {
     initial: highScore,
     score: score
     }
+    console.log(saveInitials)
 
     saveInitals.addEventListener("click", save);
-    displayBtn.addEventListener("click", showScores);
     function save() {
     var userData = JSON.parse(localStorage.getItem("data")) || [];
     userData.push(user);
