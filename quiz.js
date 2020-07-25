@@ -6,6 +6,7 @@ const questionEl = document.getElementById("question");
 const timerEl = document.getElementById("timer");
 const answerButtonEl = document.getElementById("answer-button");
 const saveInitals = document.getElementById("saveInitials");
+var score = 0;
 
 // variables
 var timerInterval;
@@ -64,6 +65,7 @@ function questionClick() {
         console.log("wrong");
     } 
     else {
+        score = score+10;
     }
     currentQuestionIndex++;
     if (currentQuestionIndex === questions.length) {
@@ -76,23 +78,44 @@ function questionClick() {
 // the quiz ends when the questions have been completed
 function endQuiz () {
     clearInterval(timerInterval)
-    questionEl.textContent = ""
-    answerButtonEl.textContent = ""
+    questionEl.textContent = " "
+    answerButtonEl.textContent = " "
     timerEl.innerText = secondsLeft;
-    console.log("Well done!")
-    document.getElementById("end-screen").style.display="block"
+    document.getElementById("end-screen").style.display="block";
+    highScores();
 
 // see highscore
 function highScores() {
-    highScorePage.setAttribute("class", "hide")
-    scoreButton.classList.remove("hide")
-    var highScore = document.getElementById=("saveInitials")
-    console.log("highScores")
+    //highScorePage.setAttribute("class", "hide")
+    //scoreButton.classList.remove("hide")
+    var highScore = document.getElementById("initials").value;
 
 // get the localstorage 
-    
-    localStorage.setItem('initials', JSON.stringify(time));
-    console.log("initials");
+    var saveInitials = document.getElementById("saveYourInitials");
+    var displayBtn = document.getElementById("displayScores");
+
+    var user = {
+    initial: highScore,
+    score: score
+    }
+
+    saveInitals.addEventListener("click", save);
+    displayBtn.addEventListener("click", showScores);
+    function save() {
+    var userData = JSON.parse(localStorage.getItem("data")) || [];
+    userData.push(user);
+    localStorage.setItem("data",JSON.stringify(userData));
+    for (let i = 0; i< userData.length; i++) {
+      console.log(
+          'initials: ' +
+          "time:" +
+          userData[i].score
+      )
+      
+    }
+
+}
+
 }
 }
 
