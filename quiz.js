@@ -86,7 +86,9 @@ function endQuiz () {
 
 // see highscore
 function highScores() {
-    var highScore = document.getElementById("initials").value;
+    var highScore = document.getElementById("initials").value.trim();
+
+    console.log("initials: ", highScores);
 
 // get the localstorage 
     var saveInitials = document.getElementById("saveYourInitials");
@@ -97,9 +99,11 @@ function highScores() {
     initial: highScore,
     score: score
     }
-    console.log(saveInitials)
+    console.log(saveInitals);
 
-    saveInitals.addEventListener("click", save);
+}
+
+saveInitals.addEventListener("click", save);
     function save() {
     var userData = JSON.parse(localStorage.getItem("data")) || [];
     userData.push(user);
@@ -114,9 +118,8 @@ function highScores() {
     }
 
 }
+}
 
-}
-}
 
 // the list of questions the user must complete
 const questions = [
