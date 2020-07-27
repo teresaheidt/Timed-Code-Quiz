@@ -11,16 +11,20 @@
 <body>
     <div class="scoreContainer">
         <div id="highScore" class="flex-center flex-colum">
+            
             <h1 id="finalScore">High Scores</h1>
             <form id ="highScoreList" method="POST">
+                <input type="text" id="initials" />
+                <button id="save">How did you score?</button>
+                <br>
                 <table>
-                    <th>
+                    <th id="topFive">
                         Top Five High Scores:
                     </th>
                         <br>
                 </table>
-                    <tr id="initials">Initial</tr>
-                    <tr class="timer">Time</tr>
+                    <tr id="username"></tr>
+                    <tr class="timer"></tr>
                     <br>
             </form>
         </div>  

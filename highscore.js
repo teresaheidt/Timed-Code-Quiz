@@ -1,33 +1,36 @@
+const initials = document.getElementById('initials');
+const username = document.getElementById('userName');
+const saveScoreBtn = document.getElementById('saveScoreBtn');
+const finalScore = document.getElementById('finalscore');
+const mostRecentScore = localStorage.getItem('mostRecentScore');
 
-// get the localstorage 
-    
- 
-    var displayBtn = document.getElementById("displayScores");
+const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+console.log(highScores);
 
-    var saveInitials = document.getElementById("saveYourInitials");
+topFive.innerHTML = mostRecentScore;
 
-    var user = {
-    initial: highScore,
-    score: score
-    }
+localStorage.setItem("initials", JSON.stringify([]));
 
-
-    saveInitals.addEventListener("click", save);
-    function save() {
-    var userData = JSON.parse(localStorage.getItem("data")) || [];
-    userData.push(user);
-    localStorage.setItem("data",JSON.stringify(userData));
-    for (let i = 0; i< userData.length; i++) {
-      console.log(
-          'initials: ' +
-          "time:" +
-          userData[i].score
-      )
-      
-    }
-    console.log(saveInitials);
+const unsername = ['th', 'bg', 'th', ];
+for (let i = 0; i < username.length; i++) {
+    console.log(username);
 }
 
+initials.addEventListener('click', () => {
+});
+
+saveHighScores = e => {
+    console.log("clicked the save button!");
+    e.preventDefault();
+
+    const score = {
+        score: mostRecentScore,
+        name: initials.value
+    };
+    console.log(initials);
+    finalScore.push(score);
+  
 }
 
-//highscore.js file should only get the scores and initials from the locale storage and display them on the highscore.html 
+
+

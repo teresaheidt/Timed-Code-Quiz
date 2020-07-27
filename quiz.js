@@ -83,14 +83,14 @@ function endQuiz () {
     timerEl.innerText = secondsLeft;
     document.getElementById("end-screen").style.display="block";
     highScores();
+}
 
 // see highscore
 function highScores() {
     var highScore = document.getElementById("initials").value.trim();
-
-    console.log("initials: ", highScores);
-
+    
 // get the localstorage 
+
     var saveInitials = document.getElementById("saveYourInitials");
  
     var displayBtn = document.getElementById("displayScores");
@@ -99,8 +99,23 @@ function highScores() {
     initial: highScore,
     score: score
     }
-    console.log(saveInitals);
+}
 
+function renderInitials() {
+    initialsInput.innerHTML = "",
+    countSpan.textContent = highScores.length;
+
+    for (var i = 0; i < highScores < 6; i++) {
+        var highScores = highScores[i];   
+    }
+}
+function init() {
+    var storedInitials = JSON.parse(localStorage.getItem("highScores"));
+    if (storedInitials !== null) {
+        highScores = storedInitials
+    }
+
+    renderInitials();
 }
 
 saveInitals.addEventListener("click", save);
@@ -109,17 +124,15 @@ saveInitals.addEventListener("click", save);
     userData.push(user);
     localStorage.setItem("data",JSON.stringify(userData));
     for (let i = 0; i< userData.length; i++) {
-      console.log(
           'initials: ' +
           "time:" +
           userData[i].score
-      )
-      
     }
-
-}
 }
 
+function storedInitials() {
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+};
 
 // the list of questions the user must complete
 const questions = [
