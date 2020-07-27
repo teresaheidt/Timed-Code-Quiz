@@ -127,11 +127,6 @@ saveInitals.addEventListener("click", save);
     var userData = JSON.parse(localStorage.getItem("userData")) || [];
     userData.push(scores);
     localStorage.setItem("user",JSON.stringify(userData));
-    // for (let i = 0; i< user.length; i++) {
-    //       'initials: ' +
-    //       "time:" +
-    //       user[i].score
-    // }
 }
 
 function storedInitials() {

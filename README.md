@@ -17,7 +17,7 @@ ___
 At the start screen, the user will find a link to the score page. On that page there will be a list of users initials and the time they finished the game. The person with the best time will be at the top of the page. 
  
 # Bugs
-There was difficulty in getting the stored initials and time to load to the highScore html. 
+While the initials and the results are stored in local storage, the results are not being displayed to the highscore page. The other issue is that the link to the 'home' button is broken. 
 
 # Usage
 This game will gauge the users progress and encourage the user to become an expert on the fundamentals of Javascript. There are a few css and html questions for fun!
