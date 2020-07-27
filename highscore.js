@@ -1,36 +1,15 @@
-const initials = document.getElementById('initials');
-const username = document.getElementById('userName');
-const saveScoreBtn = document.getElementById('saveScoreBtn');
 const finalScore = document.getElementById('finalscore');
 const mostRecentScore = localStorage.getItem('mostRecentScore');
+const resentBtn = document.querySelector("#resentBtn");
 
-const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
-console.log(highScores);
+highScoreList.innerHTML = highScores;
+,Map((initials) => {
+    return `<p class=">${score.name} - ${score.score}</p>`;
+})
+.join("");
 
-topFive.innerHTML = mostRecentScore;
-
-localStorage.setItem("initials", JSON.stringify([]));
-
-const unsername = ['th', 'bg', 'th', ];
-for (let i = 0; i < username.length; i++) {
-    console.log(username);
+function resetScores() {
+    window.localStorage.clear();
 }
 
-initials.addEventListener('click', () => {
-});
-
-saveHighScores = e => {
-    console.log("clicked the save button!");
-    e.preventDefault();
-
-    const score = {
-        score: mostRecentScore,
-        name: initials.value
-    };
-    console.log(initials);
-    finalScore.push(score);
-  
-}
-
-
-
+resentBtn.addEventListener('click', resetScores);

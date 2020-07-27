@@ -82,23 +82,19 @@ function endQuiz () {
     answerButtonEl.textContent = " "
     timerEl.innerText = secondsLeft;
     document.getElementById("end-screen").style.display="block";
-    highScores();
 }
 
 // see highscore
-function highScores() {
-    var highScore = document.getElementById("initials").value.trim();
-    
-// get the localstorage 
+function saveScores() {
+    var userName = document.getElementById("initials");
 
-    var saveInitials = document.getElementById("saveYourInitials");
- 
-    var displayBtn = document.getElementById("displayScores");
+    // get the localstorage 
 
     var user = {
-    initial: highScore,
+    initial: userName.value,
     score: score
     }
+    console.log(user);
 }
 
 function renderInitials() {
@@ -120,14 +116,22 @@ function init() {
 
 saveInitals.addEventListener("click", save);
     function save() {
-    var userData = JSON.parse(localStorage.getItem("data")) || [];
-    userData.push(user);
-    localStorage.setItem("data",JSON.stringify(userData));
-    for (let i = 0; i< userData.length; i++) {
-          'initials: ' +
-          "time:" +
-          userData[i].score
+    var userName = document.getElementById("initials");
+
+    // get the localstorage 
+
+    var scores = {
+    initial: userName.value,
+    score: score
     }
+    var userData = JSON.parse(localStorage.getItem("userData")) || [];
+    userData.push(scores);
+    localStorage.setItem("user",JSON.stringify(userData));
+    // for (let i = 0; i< user.length; i++) {
+    //       'initials: ' +
+    //       "time:" +
+    //       user[i].score
+    // }
 }
 
 function storedInitials() {
