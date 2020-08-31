@@ -1,15 +1,17 @@
-const finalScore = document.getElementById('finalscore');
-const mostRecentScore = localStorage.getItem('mostRecentScore');
-const resentBtn = document.querySelector('#resetBtn');
+const highScore = document.querySelector('highScore');
+const userdata = JSON.parse(localStorage.getItem("userData")) || [];
 
-const storedInitials = () => (
-    <div>
-      <ul>{initials.map(initials => <li key={initials}> {initials} </li>)}</ul>
-    </div>
-  );
-.join("");
+highScore.innerHTML = highScore 
+.map((userdata), => {
+  return `<p class="styledText">${score.initial} - ${score.score}</p>`;
+
+})
 
 function resetScores() {
-    window.localStorage.clear();
+  window.localStorage.clear();
 }
+
+resetBtn.addEventListener("click", resetScores);
+
+
 
